@@ -1,0 +1,190 @@
+/* General Styles */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Wrapper Styles */
+#wrapper {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  transition: all 0.5s ease;
+
+  &.toggled #sidebar-wrapper {
+    margin-left: -250px;
+  }
+
+  &.toggled #page-content-wrapper {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    padding-left: 250px;
+
+    &.toggled {
+      padding-left: 0;
+    }
+  }
+}
+
+/* Sidebar Styles */
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #000;
+  overflow-y: auto;
+  transition: all 0.5s ease;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    color: #999999;
+    text-indent: 20px;
+    line-height: 40px;
+    cursor: pointer;
+
+    &.sidebar-brand {
+      height: 65px;
+      font-size: 18px;
+      line-height: 60px;
+
+      a {
+        color: #999999;
+
+        &:hover {
+          color: #fff;
+          background: none;
+        }
+      }
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: #999999;
+
+      &:hover {
+        text-decoration: none;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      &.active-link {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+}
+.gradient-menu:before {
+  top: 0.21em;
+  bottom: 0.21em;
+  background: linear-gradient(
+    to bottom,
+    black,
+    black 20%,
+    white 20%,
+    white 40%,
+    black 40%,
+    black 60%,
+    white 60%,
+    white 80%,
+    black 80%,
+    black 100%
+  );
+}
+
+/* Page Content Styles */
+#page-content-wrapper {
+  width: calc(100% - 270px); /* Ajuster la largeur en fonction de la taille de la sidebar et de l'espace supplémentaire */
+  position: fixed;
+  padding: 15px;
+  overflow-y: auto;
+  height: 100%;
+  transition: all 0.5s ease;
+  padding-right: 20px; /* Ajouter un espace à droite */
+  margin-right: 20px; /* Déplacer légèrement le contenu vers la gauche */
+
+  /* Table Styles */
+.table {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.table .table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+}
+
+/* Menu Icon Styles */
+.gradient-menu {
+  position: relative;
+  padding-left: 1.25em;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1em;
+  }
+
+  &:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+  }
+}

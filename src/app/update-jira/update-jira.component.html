@@ -1,0 +1,75 @@
+<div id="wrapper" [ngClass]="{'toggled': isSidebarOpened}">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav" id="side_bar">
+            <li class="sidebar-brand">
+                <a href="/table" routerLink="/table" class="dashboard-link">
+                  <h1>Dashboard</h1>
+                </a>
+              </li>
+            <hr>
+            <li><a routerLink="/jiras" routerLinkActive="active-link">Jira</a></li>
+            <li><a routerLink="/tests" routerLinkActive="active-link">Test Case</a></li>
+            <li><a routerLink="/upload" routerLinkActive="active-link">Documentation</a></li>
+            <li><a routerLink="/kpis" routerLinkActive="active-link">Performance indicator</a></li>
+            <li><a (click)="onLogout()" >Logout</a></li>
+            <li><a (click)="onChangePassword()" >Change Password</a></li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>
+                        <a href="#" class="gradient-menu" id="menu-toggle" (click)="toggleSidebar($event)"></a>
+                    </h1>
+                    <div class="col-md-6 offset-md-3">
+                        <h3 class="text-center" style="text-align: center;">Update Jira</h3>
+                        <form (ngSubmit)="onSubmit()">
+                            <div class="form-group mb-3">
+                                <label for="libelle">Wording</label>
+                                <input type="text" class="form-control" id="libelle" [(ngModel)]="jira.libelle" name="libelle">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label [(ngModel)]="jira.gravite" for="gravite">Criticality</label>
+                                <select  [(ngModel)]="jira.gravite" class="form-control" name="gravite">
+                                  <option value="Blocking">Blocking</option>
+                                  <option value="Major">Major</option>
+                                  <option value="Minor">Minor</option>
+                              </select>
+                              
+                              </div>
+                            <div class="form-group mb-3">
+                                <label for="n_jira">Jira number</label>
+                                <input type="text" class="form-control" id="n_jira" [(ngModel)]="jira.n_jira" name="n_jira">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label [(ngModel)]="jira.statut" for="statut">Status</label>
+                                <select  [(ngModel)]="jira.statut" class="form-control" name="criticite">
+                                    <option value="Open">Open</option>
+                                    <option value="In progress">In progress</option>
+                                    <option value="Closed">Closed</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3" *ngIf="securityService.kc?.authenticated">
+                                <label for="ouvert_par">Opened by</label>
+                                <input type="text" class="form-control" id="ouvert_par" [(ngModel)]="jira.ouvert_par" name="ouvert_par" disabled>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="commentaire">Comment</label>
+                                <input type="text" class="form-control" id="commentaire" [(ngModel)]="jira.commentaire" name="commentaire">
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn-success" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>

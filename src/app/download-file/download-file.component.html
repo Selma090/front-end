@@ -1,0 +1,11 @@
+<!-- download.component.html -->
+<div class="download-container">
+    <h3>Uploaded Files</h3>
+    <ul>
+      <li *ngFor="let file of files">
+        {{ file }}
+        <button (click)="onDownload(file)" class="btn btn-link">Download</button>
+      </li>
+    </ul>
+  </div> 
+  
